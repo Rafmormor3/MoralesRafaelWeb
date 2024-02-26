@@ -1,0 +1,158 @@
+a{
+    text-decoration: none;
+    color: #416ecf;
+}
+
+.pag{
+    font-size: 17px;
+}
+
+.container{
+    display: grid;
+    grid-template-areas: "filters"
+                            "cards";
+    
+}
+
+.cards{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-gap:35px;
+    margin-top: 20px;
+}
+
+.filters{
+    height: 5%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+    text-align: center;
+}
+.order{
+
+    width: 60%;
+    height: 20%;
+    margin-top: 10%;
+
+}
+.order:hover{
+    background-color: #e2e2e2
+}
+.categories{
+    width: 60%;
+    height: 20%;
+    margin-top: 10%;
+    justify-self: left;
+}
+.categories:hover{
+    background-color: #e2e2e2
+}
+
+img{
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: solid 2px rgb(230, 230, 230);
+    color: black;
+}
+.card a{
+    color: black;
+}
+.card:hover{
+    border: solid 2px rgb(4, 4, 4);
+}
+
+.button{
+    background-color: #6e6e6e;
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px;
+}
+.button:hover{
+    border: solid 1px black;
+}
+.orderButton{
+    background-color: rgb(255, 255, 255);
+    border: 0;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+.orderButton:hover{
+    background-color: #f0f0f0;
+}
+
+.msg{
+    width: 100%;
+    margin-top: 10%;
+}
+
+.del{
+    align-self: center;
+    margin-bottom: 10px;
+}
+.del:hover{
+    background-color: #e0d2d2;
+    border-radius: 5px;
+}
+
+.edit{
+    align-self: center;
+    margin-bottom: 10px;
+}
+.edit:hover{
+    background-color: #fff9b7;
+
+}
+
+.searchCard{
+    margin-top: 10%;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .cards{
+        display: grid;
+        grid-template-columns:repeat(2,1fr);
+        grid-gap:35px;
+    }
+
+    .filters {
+        display: grid;
+        grid-template-rows: 50px 50px; 
+        grid-template-columns: auto auto;
+        height: 5%;
+         
+    }
+    
+    .search {
+        grid-row: 1; 
+        grid-column: span 2; 
+        justify-self: center; 
+    }
+
+    .categories{
+        width: 75%;
+        height: 20%;
+        margin-top: 14%;
+        justify-self: center;
+    }
+
+    .msg{
+        width: 100%;
+        margin-top: 50%;
+    }
+
+
+
+}

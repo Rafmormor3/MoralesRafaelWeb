@@ -1,0 +1,55 @@
+.body{
+    text-align: center;
+    border: solid 5px #710000;
+    border-radius: 15px;
+    padding: 10px;
+    padding-bottom: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#day{font-size: medium; font-weight: bold;}
+
+#start{
+    margin-top: 20px;
+    color:#710000;
+    
+}
+
+.input{
+    border:solid 2px #710000;
+    border-radius: 10px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    margin-top: 5px;
+    background-color: rgb(240, 240, 240);
+}
+
+.rent{
+    background-color: #710000;
+    color: aliceblue;
+    width: 20%;
+    border-radius: 10px;
+    border: solid 1px;
+}
+.rent:hover{
+    border: solid 1px black;
+}
+
+.cancel{
+    background-color: #ffffff;
+    color: #710000;
+    width: 30%;
+    border-radius: 10px;
+    border: solid 1px;
+}
+.cancel:hover{
+    background-color: #ecdddd;
+}
+
+#price{
+    text-align: left;
+}

@@ -1,0 +1,14 @@
+.add {
+    background-color: #710000;
+    color: aliceblue;
+    border-radius: 5px;
+    height: 40px;
+    width: 100%; 
+    border: solid 3px #710000;
+    margin-top: 5%;
+    font-size: 1rem; 
+}
+
+.add:hover {
+    border: solid 3px #ffffff;
+}

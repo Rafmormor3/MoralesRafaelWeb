@@ -1,0 +1,158 @@
+<div class="container">
+  <div>
+    
+    
+    <div class="filters">
+      <select class="form-control-sm categories" name="categories" [(ngModel)]="category" (change)="getPage(pageNumber,order,ad, category)">
+        <option value="0" selected>Categorias</option> 
+        @for (category of categories; track $index) {
+          <option value="{{category.id}}">{{category.name}}</option>
+        }
+      </select>
+      <div>
+        <select class="form-control-sm order" name="order" [(ngModel)]="order" (change)="getPage(pageNumber,order,ad, category)">
+          <option value="plateNumber" selected>Ordenar</option> 
+          <option value="year">Año Fabricación</option>
+          <option value="fuel">Carburante</option>
+          <option value="brand">Marca</option>
+          <option value="dailyPrice">Precio</option>
+        </select>
+        
+        @if(ad=="asc"){
+          <button class="desc orderButton" (click)="getPage(pageNumber,order,'desc', category)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-sort-down" viewBox="0 0 16 16" >
+              <path d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+          </button>
+        }
+        @else {
+          <button class="desc orderButton" (click)="getPage(pageNumber,order,'asc', category)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-sort-up" viewBox="0 0 16 16">
+              <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.5.5 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5M7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+            </svg>
+          </button>
+        }
+        
+      </div>
+      
+      <app-search class="search" (onSearch)="search($event)"></app-search>
+
+  </div>
+
+  <div class="cards">
+    @if(page){
+      @for (vehicle of page.content; track $index) {
+
+        @if(searchTerm==undefined){
+          <div class="card" >
+              <a routerLink="/vehicles/{{vehicle.id}}" routerLinkActive="router-link-active" >
+              <img src="{{vehicle.image}}" class="card-img-top">
+              <div class="card-body">
+                <h3 class="card-title">{{vehicle.brand}} {{vehicle.model}}</h3>
+                <small>{{vehicle.year}}&nbsp; |&nbsp; {{vehicle.fuel}}&nbsp; |&nbsp;{{vehicle.nameCategory}}</small>
+                <h2 class="card-text">{{vehicle.dailyPrice}}€</h2>
+              </div>
+            </a>
+            @if(admin()){
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
+                class="bi bi-trash3" viewBox="0 0 16 16" (click)="delete(vehicle.id)">
+                  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" 
+                    class="bi bi-pencil edit" viewBox="0 0 16 16" style="display: inline-block;"
+                    routerLink="/addEdit/{{vehicle.id}}">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                </svg>
+            }
+          </div>
+        }
+        @else {
+
+          @if(vehicle.model.includes(searchTerm)){
+            <div class="card searchCard">
+              <a routerLink="/vehicles/{{vehicle.id}}" routerLinkActive="router-link-active" >
+                  <img alt="imagen catalogo" src="{{vehicle.image}}" class="card-img-top">
+                  <div class="card-body">
+                    <h5 class="card-title">{{vehicle.brand}} {{vehicle.model}}</h5>
+                    <small>{{vehicle.year}}&nbsp; |&nbsp; {{vehicle.fuel}}&nbsp; |&nbsp;{{vehicle.nameCategory}}</small>
+                    <h2 class="card-text">{{vehicle.dailyPrice}}€</h2>
+                    
+                  </div>
+                </a>
+                @if(admin()){
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" 
+                    class="bi bi-trash3 del" viewBox="0 0 16 16" (click)="delete(vehicle.id)" style="display: inline-block;">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                    </svg>&nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" 
+                    class="bi bi-pencil edit" viewBox="0 0 16 16" style="display: inline-block;"
+                    routerLink="/addEdit/{{vehicle.id}}">
+                      <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                    </svg>
+                  </div>
+                }
+            </div>
+          }
+
+        }
+      }
+    }
+  </div>
+  @if(msg==true) {
+    <div align="center" class="msg">
+      <h3>Vehiculo no encontrado.</h3><br>
+      <h5>Asegurese de que introduce correctamente el modelo el vehiculo.</h5><br>
+      <button class="button" (click)="return()">Volver al catalogo</button>
+    </div>
+  }
+</div><br><br><br><br><br><br>
+
+<div align="center" class="pag">
+    @if(page){
+
+        Total Items: {{totalElements}}<br>
+        
+        @if (pageNumber>1) {
+          <a (click)="getPage(1,order, ad, category)" href='javascript:void(0)'>First</a>&nbsp;
+        }
+        @else{
+          <span>First</span>&nbsp;
+        } 
+        
+        @if (pageNumber>1) {
+          <a (click)="getPage(page.pageable.pageNumber,order, ad, category)" href='javascript:void(0)'><span>❰</span></a>&nbsp;
+        }
+        @else{
+          <span>❰</span>&nbsp;
+        }
+        
+        @for (i of getTotalPage(pageNumber); track $index) {
+          
+          @if (pageNumber!=i) {
+            <a  (click)="getPage(i,order, ad, category)" href='javascript:void(0)'>{{i}}</a>&nbsp;
+            
+          }
+          @else {
+            
+            <span><a>{{i}}</a></span>&nbsp;
+          }
+          
+        }
+
+        @if (pageNumber<page.totalPages) {
+        
+        <a (click)="getPage(nextPage(pageNumber),order, ad, category)" href='javascript:void(0)'>❯</a>&nbsp;
+    }
+      @else {
+        <span>❯</span>&nbsp;
+      }
+      
+      @if(pageNumber<page.totalPages-1){
+        <a (click)="getPage(nextPage(page.totalPages-1),order, ad, category)" href='javascript:void(0)'>Last</a>&nbsp;
+      }
+      @else {
+        <span>Last</span>&nbsp;
+      } 
+    }
+  </div><br>

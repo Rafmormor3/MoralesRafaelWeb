@@ -1,0 +1,72 @@
+
+<!-- <div class="container ">
+    <div class="body">
+        <br><br><h2>LOGIN</h2>
+        <form class="details" #myForm="ngForm" (ngSubmit)="loginForm()">
+            <label id="start">Username</label><br>
+            <input class="input" type="text" name="username" ngModel #username><br><br>
+            <label id="start">Password</label><br>
+            <input class="input" type="password" name="password" ngModel  #password><br><br><br><br>
+            <button class="login" name="login" type="submit">Confirmar</button>
+            <button class="cancel" routerLink="/" >Volver</button><br><br>
+        </form><br><br>
+        <p>¿Quieres entrar y no tienes cuenta? <a routerLink="/register">Registrarme</a></p><br><br>
+    </div>
+</div> -->
+
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="my-5 display-3 fw-bold ls-tight">
+              Mejores precios, <br />
+              <span class="text" style="color: #710000;"> mejores coches</span>
+            </h1>
+            <p style="color: hsl(217, 10%, 50.8%)"> 
+                Alquilar coches brinda versatilidad sin compromisos a largo plazo, permitiéndote elegir 
+                el vehículo ideal para cada ocasión. Evitas costos fijos como mantenimiento y depreciación, 
+                convirtiendo esta opción en una solución de movilidad conveniente y eficiente.
+            </p>
+          </div>
+  
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+
+                <form #myForm="ngForm" (ngSubmit)="loginForm()">
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3">Nombre de Usuario</label>
+                    <input type="text" id="username" class="form-control" name="username" ngModel #username/>
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                      <label class="form-label" for="form3Example4">Contraseña</label>
+                        <input type="password" id="password" class="form-control" name="password" ngModel  #password/>
+                  </div>
+  
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-block mb-4" style="background-color: #710000; color: aliceblue;">
+                    Entrar
+                  </button>
+
+                  <div>
+                    <p class="mb-0">¿No está registrado? <a routerLink="/register" class="text-50 fw-bold">Registrarse</a>
+                    </p>
+                  </div>
+  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+

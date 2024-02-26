@@ -1,0 +1,28 @@
+<div class="container">
+    @if(vehicle){
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <img src={{vehicle.image}} class="card-img" alt="Foto del Coche">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">{{vehicle.brand}} {{vehicle.model}}</h5>
+                        <p class="card-text">
+                            <strong>Matricula:</strong> {{vehicle.plateNumber}}<br>
+                            <strong>Color:</strong> {{vehicle.color}}<br>
+                            <strong>Año:</strong>{{vehicle.year}}<br>
+                            <strong>Categoria:</strong> {{vehicle.nameCategory}}<br>
+                            <strong>Combustible:</strong> {{vehicle.fuel}}
+                        </p>
+                        <h1 class="price">{{vehicle.dailyPrice}} €/dia</h1><br><br>
+                        @if(login()){
+                            <a class="btn btn-primary button" (click)="form()">Alquilar Ahora</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<br><br>

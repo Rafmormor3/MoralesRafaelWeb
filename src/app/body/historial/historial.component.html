@@ -1,0 +1,30 @@
+<br><br><div align="center" style="color: #710000;">
+  <h1>Historial de Alquileres</h1>
+</div><br><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Matricula</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Fecha de Inicio</th>
+        <th scope="col">Fecha Final</th>
+        <th scope="col">Precio Total</th>
+      </tr>
+    </thead>
+    <tbody>
+        @if(rentals){
+            @for (rental of rentals; track $index) {
+                <tr>
+                  <td>{{toVehicle(rental.vehicle).plateNumber}}</td>
+                  <td>{{toVehicle(rental.vehicle).brand}}</td>
+                  <td>{{toVehicle(rental.vehicle).model}}</td>
+                  <td>{{rental.startDate}}</td>
+                  <td>{{rental.endDate}}</td>
+                  <td>{{rental.totalPrice}} €</td>
+                </tr>
+            }
+        }
+    </tbody>
+  </table><br><br><br><br><br><br><br><br><br>
+
