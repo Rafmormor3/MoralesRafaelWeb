@@ -12,10 +12,12 @@ export class RentalService {
 
   constructor(private http: HttpClient) { }
 
+  //Hacemos la peticion para añadir el alquiler que le pasamos por parámetro.
   addRental(rental:Omit<Rental,"id">):Observable<Rental>{
     return this.http.post<Rental>(`${this.url}/rental`, rental);
   }
 
+  //Hacemos la peticion para ver si las fechas son disponibles.
   available(form:formData):Observable<boolean>{
     return this.http.post<boolean>(`${this.url}/available`,form)
   }

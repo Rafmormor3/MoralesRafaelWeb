@@ -11,10 +11,12 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  //Nos devuelve el usuario que ha sido registrado y añadido a la base de datos.
   register(user:Omit<User, "id"|"role"|"active"|"rentalList">){
     return this.http.post<User>(this.url, user);
   }
 
+  //Obtenemos el usuario con el id que pasamos por parametro.
   getUser(id:number){
     return this.http.get<User>(`http://localhost:8082/user/${id}`)
   }

@@ -19,18 +19,23 @@ export class NavbarComponent{
     private loginService:LoginService
   ){}
 
+  
+  //Nos devuelve si esta logueado o no
   isLogin():boolean{
     return this.loginService.isLogin()
   }
 
+  //Nos devuelve si es administrador o no
   isAdmin():boolean{
     return this.loginService.idAdmin();
   }
 
+  //Cierra sesion
   logout(){
     this.loginService.logout();
   }
 
+  //Nos da el username del usuario registrado.
   username():string{;
     return this.loginService.getUser();
   }

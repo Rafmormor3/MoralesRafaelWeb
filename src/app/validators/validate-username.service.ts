@@ -10,6 +10,7 @@ export class ValidateUsernameService implements AsyncValidator{
 
   constructor( private http: HttpClient) { }
 
+  //Validamos que el nombre de usuario no este ya en la base de datos, en el caso de que esté, se mandara un error.
   validate(control:AbstractControl):Observable<ValidationErrors | null> {
 
     const username = control.value;

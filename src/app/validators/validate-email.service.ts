@@ -10,6 +10,7 @@ export class ValidateEmailService implements AsyncValidator {
 
   constructor(private http:HttpClient) { }
 
+  //Valida si el email existe ya en la base de datos, devolviendonos un error en caso afirmativo.
   validate(control:AbstractControl):Observable<ValidationErrors | null>{
     const email = control.value;
 

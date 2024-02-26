@@ -14,22 +14,23 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
 
   constructor(
-    private fb:FormBuilder,
     private loginService:LoginService,
     private router:Router
   ){}
 
-  @ViewChild("myForm") myForm!:NgForm
+  @ViewChild("myForm") myForm!:NgForm //Relaciona el formulario
 
+  //Si el formulario es valido, recoge los datos y nos logueamos.
   loginForm(){
     if(this.myForm.valid){
       const {username, password} = this.myForm.value
       this.loginService.login(username, password)
       .subscribe(
-        resp => {
+        resp => { //Nos devuelve true si hemos sido logueados correctamente, y nos manda al home.
           if (resp===true){
             this.router.navigateByUrl('/')
           }
+          //Si nos devuelve false, mensaje de error.
           else{
             Swal.fire({
               title: 'Error!',

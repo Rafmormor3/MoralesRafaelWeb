@@ -9,7 +9,7 @@ import { map } from 'rxjs';
 export class ValidateUserService {
 
   
-
+  //Validamos que tanto el password como el passwordRep sean iguales, si no es asi, mandamos un error. 
   passwords(field1:string, field2:string):ValidatorFn{
 
     return(formControl:AbstractControl):ValidationErrors | null =>{

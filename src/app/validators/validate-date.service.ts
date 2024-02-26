@@ -16,6 +16,7 @@ export class ValidateDateService {
     return true; // La fecha es válida
   }
 
+  //Funcion que valida si la fecha inicial es posterior o igual a la actual y si la fecha final es posterior a la inicial.
   endAfter(field1:Date, field2:Date):boolean{
 
     const today = new Date()

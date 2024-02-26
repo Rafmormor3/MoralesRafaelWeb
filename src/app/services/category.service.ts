@@ -12,10 +12,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
+  //Obtenemos todas las categorias
   getCategories():Observable<Category[]>{
     return this.http.get<Category[]>(`${this.url}/categories`);
   }
 
+  //Obtenemos la categoria con tal id
   getCategory(idCategory:number):Observable<Category>{
     return this.http.get<Category>(`${this.url}/category/${idCategory}`)
   }

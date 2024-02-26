@@ -17,11 +17,12 @@ import { JsonPipe } from '@angular/common';
 })
 export class AddEditComponent implements OnInit{
 
-  @Input() id! : number;
+  @Input() id! : number; //id que recuperamos si vamos a editar
 
-  image : string = "";
+  image : string = ""; //Enlace de la imagen que recogemos del formulario
   categories!:Category[];
 
+  //Objeto que añadiremos
   vehicle : Omit<Content, "id"|"nameCategory"|"rentalList"> = {
     plateNumber:  "",
     brand:        "",
@@ -42,6 +43,7 @@ export class AddEditComponent implements OnInit{
     private vehicleService:VehicleService
   ){}
 
+  //Campos del formulario con sus respectivas validaciones.
   myForm:FormGroup = this.fb.group({
     plateNumber:  ["", [Validators.required, Validators.pattern("[A-Z0-9]*")],[]],
     brand:        ["", [Validators.required]],
@@ -59,6 +61,7 @@ export class AddEditComponent implements OnInit{
             && this.myForm.get(field)?.touched;
   }
 
+  //Tratamos el mensaje de error segun los errores del campo matricula
   get plateNumberError():string{
     const errors = this.myForm.get('plateNumber')?.errors ;
     let errorMsg: string = '';
@@ -73,6 +76,7 @@ export class AddEditComponent implements OnInit{
     return errorMsg;
   }
 
+  //Tratamos los mensajes de error segun los errores del campo categoria
   get categoryError():string{
     const errors = this.myForm.get('category')?.errors ;
     let errorMsg: string = '';
@@ -87,6 +91,7 @@ export class AddEditComponent implements OnInit{
     return errorMsg;
   }
 
+  //Al iniciar, si la id no es nula, entonces rellena los campos del formulario con los del vehiculo con tal id
   ngOnInit(): void {
 
     if(this.id!=null){
@@ -95,7 +100,7 @@ export class AddEditComponent implements OnInit{
         next: response =>{
           console.log(response)
 
-          this.image = response.image || '';
+          this.image = response.image || ''; //Tratamos la imagen
 
           this.myForm.setValue({
             plateNumber: response.plateNumber,
@@ -115,22 +120,29 @@ export class AddEditComponent implements OnInit{
 
     }
 
-
-
+    //Recogemos las categorias para rellenar el select del formulario
     this.categoryService.getCategories().subscribe({
       next: categories => this.categories = categories
     })
   }
 
+  //Funcion de añadir o editar
   add(){
+
+    //Añadir
     if (this.myForm.valid && this.id==null) {
+
+      //Subimos la imagen y añadimos a la base de datos.
       this.uploadService.uploadFile(this.image).subscribe({
+        //le asignamos al campo imagen la url que nos manda cloudinary al subirlo.
         next: (response:any) => {
           const imageUrl = response.secure_url;
           this.image = imageUrl;
           const {...vehicle} = this.myForm.value;
           this.vehicle = vehicle;
           this.vehicle.image = imageUrl; 
+
+          //Una vez asiganada la imagen, añadimos a la base de datos y mandamos mensaje de exito o de error.
           this.vehicleService.postVehicle(this.vehicle).subscribe({
             next: (data) => {
               Swal.fire({
@@ -148,8 +160,10 @@ export class AddEditComponent implements OnInit{
               });
             }
           });
-          this.myForm.reset();
+
+          this.myForm.reset(); //Una vez añadido reiniciamos el formulario
         },
+        //Mensaje de error al subir la imagen.
         error: (err) => {
           Swal.fire({
             title: "Opps...!",
@@ -158,7 +172,11 @@ export class AddEditComponent implements OnInit{
           });
         }
       });
+
+    //Editar
     }else if(this.myForm.valid && this.id!=null){
+
+      //Subimos la nueva imagen y asignamos la url que nos mandan al campo imagen
       this.uploadService.uploadFile(this.image).subscribe({
         next: (response:any) => {
           const imageUrl = response.secure_url;
@@ -166,6 +184,8 @@ export class AddEditComponent implements OnInit{
           const {...vehicle} = this.myForm.value;
           this.vehicle = vehicle;
           this.vehicle.image = imageUrl; 
+
+          //Realizamos la edicion y mostramos mensaje de exito o de error
           this.vehicleService.editVehicle(this.vehicle, this.id).subscribe({
             next: (data) => {
               Swal.fire({
@@ -192,6 +212,8 @@ export class AddEditComponent implements OnInit{
           });
         }
       });
+
+    //Si no esta bien el formulario, mensaje de error.
     }else{
       Swal.fire({
         title: "Opps...!",
@@ -201,6 +223,7 @@ export class AddEditComponent implements OnInit{
     }
   }
 
+  //Lee el fichero que le asignamos al campo imagen. Carga y nos muestra la imagen seleccionada.
   getFile(event: Event) {
 
     const input: HTMLInputElement = <HTMLInputElement>event.target;

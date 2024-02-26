@@ -19,9 +19,11 @@ import { LoginService } from '../../services/login.service';
 })
 export class DetailsComponent implements OnInit{
 
-  @Input() id : number = 0;
+  @Input() id : number = 0; //rescatamos el id de la ruta
 
   vehicle!:Content;
+
+  //Formulario que asignamos las fechas. Sus datos se mandaran mediante un servicio a los detalles del alquiler.
   formData:formData={
     idVehicle: 0,
     startDate: new Date(),
@@ -30,6 +32,7 @@ export class DetailsComponent implements OnInit{
 
   body:string="bodyNot";
 
+  //Los inputs del formulario hecho con sweetAlert
   startInput !: HTMLInputElement
   endInput !: HTMLInputElement
 
@@ -42,7 +45,7 @@ export class DetailsComponent implements OnInit{
     private loginService : LoginService
     ){}
   
-  
+  //Al iniciar, rescatamos el vehiculo con tal id para mostrar los detalles.
   ngOnInit(): void {
       
     this.vehicleService.getVehicle(this.id).subscribe({
@@ -51,6 +54,7 @@ export class DetailsComponent implements OnInit{
     
   }
 
+  //Funcion con la que sabremos si el usuario esta logueado o no
   login():boolean{
     
     if(this.loginService.isLogin()){
@@ -62,6 +66,7 @@ export class DetailsComponent implements OnInit{
     
   }
 
+  //Formulario donde introduciremos las fechas. 
   form(){
     Swal.fire({
       title:"Fecha de Reserva",
@@ -88,11 +93,15 @@ export class DetailsComponent implements OnInit{
       confirmButtonText: 'Seguir',
       confirmButtonColor:"#710000",
       focusConfirm: false,
+
+      //Cuando se abra inicializamos los inputs
       didOpen: () => {
         const popup = Swal.getPopup()!
         this.startInput = popup.querySelector('#startDate') as HTMLInputElement
         this.endInput= popup.querySelector('#endDate') as HTMLInputElement
       },
+
+      //Antes de confirmar asignamos los valores del formulario al formData
       preConfirm: () => {
         this.formData.idVehicle=this.id;
         this.formData.startDate= new Date(this.startInput.value);
@@ -104,9 +113,11 @@ export class DetailsComponent implements OnInit{
     })
   }
 
-
+  //
   goTo(){
-    console.log(this.formData)
+    //console.log(this.formData)
+
+    //Validamos que haya fechas
     if(!this.validateDateService.isValidDate(this.formData.startDate) 
       || !this.validateDateService.isValidDate(this.formData.endDate)){
         Swal.fire({
@@ -116,6 +127,7 @@ export class DetailsComponent implements OnInit{
           confirmButtonColor:"#710000"
         });
 
+    //Validamos que las fechas sean validas
     }else if(!this.validateDateService.endAfter(this.formData.startDate, this.formData.endDate)){
       Swal.fire({
         icon: "error",
@@ -123,6 +135,8 @@ export class DetailsComponent implements OnInit{
         text: "La fecha de inicio debe ser posterior a la actual y anterior a la final.",
         confirmButtonColor:"#710000"
       });
+
+    //Si las fechas y el formulario esta bien, nos redirige a la ficha de alquiler.
     }else{
       
       this.dataSharingService.setFormData(this.formData)

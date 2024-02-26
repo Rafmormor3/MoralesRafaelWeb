@@ -29,6 +29,7 @@ export class RegisterComponent {
     private router:Router
   ){}
 
+  //Formulario con las validaciones de los campos.
   myForm:FormGroup = this.fb.group({
     name:["", [Validators.required]],
     email:["",[Validators.required, Validators.email],[this.validateEmailService]],
@@ -44,6 +45,7 @@ export class RegisterComponent {
             && this.myForm.get(field)?.touched;
   }
 
+  //Manejo de los mensajes de error del email
   get emailErrorMsg(): string {
     const errors = this.myForm.get('email')?.errors ;
     let errorMsg: string = '';
@@ -62,6 +64,7 @@ export class RegisterComponent {
     return errorMsg;
   }
 
+  //Manejo de los mensajes de error del campo telefono
   get phoneErrors():string{
     const errors = this.myForm.get('phone')?.errors ;
     let errorMsg: string = '';
@@ -80,6 +83,7 @@ export class RegisterComponent {
     return errorMsg;
   }
 
+  //Funcion de registro. Si se registra o si da fallo nos lleva al login.
   submit(){
     
     this.myForm.markAllAsTouched();

@@ -11,10 +11,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchComponent {
 
-  @Output() onSearch : EventEmitter<string> = new EventEmitter();
+  @Output() onSearch : EventEmitter<string> = new EventEmitter(); //enviamos el valor del input al componente padre
 
   searchTerm : string = "";
 
+  //Emite el valor del input 
   search():void{
     this.onSearch.emit(this.searchTerm);
   }

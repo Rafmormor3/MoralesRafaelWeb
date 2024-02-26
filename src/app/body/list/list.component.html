@@ -43,7 +43,7 @@
     @if(page){
       @for (vehicle of page.content; track $index) {
 
-        @if(searchTerm==undefined){
+        @if(searchTerm==undefined || searchTerm==""){
           <div class="card" >
               <a routerLink="/vehicles/{{vehicle.id}}" routerLinkActive="router-link-active" >
               <img src="{{vehicle.image}}" class="card-img-top">
@@ -68,7 +68,7 @@
         }
         @else {
 
-          @if(vehicle.model.includes(searchTerm)){
+          @if(vehicle.model.includes(searchTerm) && searchTerm!=""){
             <div class="card searchCard">
               <a routerLink="/vehicles/{{vehicle.id}}" routerLinkActive="router-link-active" >
                   <img alt="imagen catalogo" src="{{vehicle.image}}" class="card-img-top">

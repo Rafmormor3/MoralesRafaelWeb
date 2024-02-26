@@ -11,12 +11,12 @@ export class UploadService {
   unsignedUploadPreset : string = 'amkfctwj';
   cloudName : string = 'dnqf48cwh';
 
+
+  //Mandamos por parametro el enlace y lo subimos al cloudinary
   uploadFile(file: string) {
 
     const url = `https://api.cloudinary.com/v1_1/${this.cloudName}/upload`;
     const fd = new FormData();
-
-
 
     fd.append('upload_preset', this.unsignedUploadPreset);
     fd.append('tags', 'browser_upload');

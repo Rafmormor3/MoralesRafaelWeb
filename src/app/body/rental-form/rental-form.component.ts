@@ -41,6 +41,8 @@ export class RentalFormComponent implements OnInit{
     totalPrice:0
   }
   
+  //Al iniciar cargamos los datos del servicio del formData donde hemos almacenado las fechas y el id del vehiculo.
+  //Con tal id, buscamos el vehiculo para recoger mas datos.
   ngOnInit(): void {
     this.form =  this.dataSharingService.getFormData()
     console.log(this.form)
@@ -49,17 +51,21 @@ export class RentalFormComponent implements OnInit{
     })
   }
 
+  //Hacemos el calculo del precio total, devolviendo el precio total del alquiler.
   getTotalPrice():number{
 
     let start: number = new Date(this.form.startDate).getTime();
     let end: number = new Date(this.form.endDate).getTime();
 
-    let days:number = (end - start)/ (1000*60*60*24);
+    let days:number = (end - start)/ (1000*60*60*24);// convertimos los milisegundos en los dias que hay entre dos fechas.
 
     let res:number = 0;
 
+    //Si hay 0 dias mostramos el precio de un dia
     if(days==0){
       res=this.vehicle.dailyPrice;
+    
+    //Asignamos al resultado los dias por el precio
     }else{
       res = days * this.vehicle.dailyPrice;
     }
@@ -67,16 +73,19 @@ export class RentalFormComponent implements OnInit{
     return res;
   }
 
+  //Devolvemos el formato dd/MM/yyyy de la fecha que introducimos
   formatDate(date:Date):string{
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
   }
 
+  //Añadimos las propiedades necesarias al objeto Rental y loa añadimos a la base de datos.
   add(){
     this.rental.vehicle=this.vehicle.id;
     this.rental.startDate=this.form.startDate;
     this.rental.endDate=this.form.endDate;
     this.rental.totalPrice=this.getTotalPrice();
 
+    //Añadimos y mandamos alerta de exito o de error.
     this.rentalService.addRental(this.rental).subscribe({
       next: (car)=> {
         Swal.fire({
