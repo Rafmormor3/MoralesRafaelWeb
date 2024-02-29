@@ -1,10 +1,10 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { inject } from '@angular/core';
 import Swal from 'sweetalert2';
 
 //Guardian que controla si es administrados o no
-export const adminGuard: CanActivateFn = (route, state) => {
+export const adminGuard: CanMatchFn = (route, state) => {
 
   //Inyectamos servicios
   const loginService = inject(LoginService)

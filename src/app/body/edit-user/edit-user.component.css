@@ -1,0 +1,24 @@
+
+.login{
+    background-color: #710000;
+    color: aliceblue;
+    width: 30%;
+    border-radius: 10px;
+    border: solid 1px;
+    margin-right: 3px;
+    margin-left: -15px;
+}
+.login:hover{
+    border: solid 1px black;
+}
+
+.cancel{
+    background-color: #ffffff;
+    color: #710000;
+    width: 30%;
+    border-radius: 10px;
+    border: solid 1px;
+}
+.cancel:hover{
+    background-color: #ecdddd;
+}

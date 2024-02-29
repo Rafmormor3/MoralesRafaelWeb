@@ -1,0 +1,35 @@
+<br><br><div align="center" style="color: #710000;">
+    <h1>Lista de Usuarios</h1>
+  </div><br><br>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Nombre de Usuario</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          @if(listUsers){
+              @for (user of listUsers; track $index) {
+                  <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.username}}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="goTo(user.id)">Editar</button>
+                    </td>
+                  </tr>
+              }
+          }
+      </tbody>
+    </table><br><br><br><br><br><br><br><br><br>
+  
+  

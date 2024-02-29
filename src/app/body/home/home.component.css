@@ -52,7 +52,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border: solid 1px rgb(190, 190, 190);
+    border: solid 1px #bebebe;
     border-radius: 5px;
 }
 

@@ -14,7 +14,6 @@ export class ValidateUsernameService implements AsyncValidator{
   validate(control:AbstractControl):Observable<ValidationErrors | null> {
 
     const username = control.value;
-    console.log(username)
 
     return this.http.get<any[]>(`http://localhost:8082/user/username?username=${username}`).pipe(
       map(resp=>{
