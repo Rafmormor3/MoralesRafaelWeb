@@ -16,18 +16,17 @@ import Swal from 'sweetalert2';
 })
 export class EditUserComponent implements OnInit{
 
-  @Input() id!:number;
+  @Input() id!:number; //id del usuario que queremos editar
 
   user!:Omit<User, "id" | "password" | "role" | "active" | "rentalList">;
 
   constructor(
     private userService:UserService,
-    private fb : FormBuilder,
-    private validateEmailService:ValidateEmailService,
-    private validateUsernameService:ValidateUsernameService
+    private fb : FormBuilder
 
   ){}
 
+  //Al iniciar la pagina nos cargar los datos del usuario con el id de la ruta.
   ngOnInit(): void {
     
     this.userService.getUser(this.id).subscribe({
@@ -40,7 +39,6 @@ export class EditUserComponent implements OnInit{
           address: user.address,
           username: user.username
         });
-        console.log(this.myForm.value)
       }
     })
 
@@ -55,6 +53,7 @@ export class EditUserComponent implements OnInit{
     username:["",[Validators.required]]
   },{})
 
+  //Validacion formulario
   invalidField(field:string){
     return this.myForm.get(field)?.invalid 
             && this.myForm.get(field)?.touched;
@@ -70,9 +69,6 @@ export class EditUserComponent implements OnInit{
       }
       else if(errors['email']){
         errorMsg = 'El email no tiene formato de correo';
-      }
-      else if(errors['emailTaken']){
-        errorMsg = 'El email ya está en uso'
       }
       
     }
@@ -98,6 +94,9 @@ export class EditUserComponent implements OnInit{
     return errorMsg;
   }
 
+  //Funcion donde llamaremos al servicio para editar el usuario.
+  //Si se ha editado correctamente mostrará mensaje de exito.
+  //Si hay error, nos mostrará un mensaje de error.
   submit(){
     this.user = this.myForm.value;
     this.userService.editUser(this.id, this.user).subscribe({

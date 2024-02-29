@@ -19,6 +19,7 @@ export class ListUsersComponent implements OnInit{
     private router:Router
   ){}
 
+  //Al iniciar recuperamos todos los usuarios de la base de datos.
   ngOnInit(): void {
 
     this.userService.getUsers().subscribe({
@@ -27,6 +28,7 @@ export class ListUsersComponent implements OnInit{
     
   }
 
+  //Funcion que nos redirige a la plantilla de edicion
   goTo(id:number){
     this.router.navigate(["editUser",id]);
   }
