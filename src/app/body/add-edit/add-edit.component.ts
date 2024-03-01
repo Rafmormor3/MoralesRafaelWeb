@@ -7,6 +7,7 @@ import { UploadService } from '../../services/upload.service';
 import { VehicleService } from '../../services/vehicle.service';
 import Swal from 'sweetalert2';
 import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit',
@@ -40,7 +41,8 @@ export class AddEditComponent implements OnInit{
     private fb :FormBuilder,
     private categoryService:CategoryService,
     private uploadService:UploadService,
-    private vehicleService:VehicleService
+    private vehicleService:VehicleService,
+    private router : Router
   ){}
 
   //Campos del formulario con sus respectivas validaciones.
@@ -86,6 +88,24 @@ export class AddEditComponent implements OnInit{
       }
       else if(errors['min']){
         errorMsg = 'Elija una categoria.';
+      }
+    }
+    return errorMsg;
+  }
+
+  //Tratamos los mensajes de error segun los errores del campo categoria
+  get yearError():string{
+    const errors = this.myForm.get('year')?.errors ;
+    let errorMsg: string = '';
+    if(errors){
+      if( errors['required']){
+        errorMsg = 'El año es obligatorio';
+      }
+      else if(errors['min']){
+        errorMsg = 'El año debe ser mayor de 1953';
+      }
+      else if(errors['max']){
+        errorMsg = 'El año debe ser menor de 2020';
       }
     }
     return errorMsg;
@@ -149,7 +169,7 @@ export class AddEditComponent implements OnInit{
                 title: "Éxito!",
                 text: "Vehiculo añadido!",
                 icon: "success",
-                denyButtonColor:"#710000"
+                confirmButtonColor:"#710000"
               })
             },
             error: (err) => {
@@ -157,6 +177,7 @@ export class AddEditComponent implements OnInit{
                 title: "Error",
                 text: err.error.message,
                 icon: "error",
+                confirmButtonColor:"#710000"
               });
             }
           });
@@ -169,6 +190,7 @@ export class AddEditComponent implements OnInit{
             title: "Opps...!",
             text: "Error al subir la imagen.",
             icon: "error",
+            confirmButtonColor:"#710000"
           });
         }
       });
@@ -192,6 +214,7 @@ export class AddEditComponent implements OnInit{
                 title: "Éxito!",
                 text: "Vehiculo editado!",
                 icon: "success",
+                confirmButtonColor:"#710000"
               })
             },
             error: (err) => {
@@ -199,16 +222,18 @@ export class AddEditComponent implements OnInit{
                 title: "Error",
                 text: "Error en la edición",
                 icon: "error",
+                confirmButtonColor:"#710000"
               });
             }
           });
-          this.myForm.reset();
+          
         },
         error: (err) => {
           Swal.fire({
             title: "Opps...!",
             text: "Error!!" + err.message,
             icon: "error",
+            confirmButtonColor:"#710000"
           });
         }
       });
@@ -219,6 +244,7 @@ export class AddEditComponent implements OnInit{
         title: "Opps...!",
         text: "Asegurese de que los campos sean correctos.",
         icon: "error",
+        confirmButtonColor:"#710000"
       });
     }
   }

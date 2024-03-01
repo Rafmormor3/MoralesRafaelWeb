@@ -4,7 +4,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Content, formData } from '../../interfaces/Pageable';
 import { VehicleService } from '../../services/vehicle.service';
 import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DataSharingService } from '../../services/data-sharing.service';
 import { ValidateDateService } from '../../validators/validate-date.service';
 import Swal from 'sweetalert2';
@@ -13,7 +13,7 @@ import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })

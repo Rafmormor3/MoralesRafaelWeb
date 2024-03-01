@@ -16,9 +16,12 @@
                             <strong>Combustible:</strong> {{vehicle.fuel}}
                         </p>
                         <h1 class="price">{{vehicle.dailyPrice}} €/dia</h1><br><br>
-                        @if(login()){
-                            <a class="btn btn-primary button" (click)="form()">Alquilar Ahora</a>
-                        }
+                        <div>
+                            @if(login()){
+                                <button class="button" (click)="form()">Alquilar Ahora</button>
+                            }
+                            <button class="return" routerLink="/vehicles">Volver</button>
+                        </div>
                     </div>
                 </div>
             </div>

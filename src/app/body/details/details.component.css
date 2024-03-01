@@ -39,6 +39,28 @@
 
 .button{
     background-color: #710000;
+    color: white;
+    padding: 2%;
+    margin-bottom: 10%;
+    border: solid 2px #710000;
+    border-radius: 5px;
+    width: 80%;
+}
+.button:hover{
+    background-color: #4c0000;
+}
+
+.return{
+    background-color: #ffffff;
+    color: #710000;
+    padding: 2%;
+    border: solid 2px #7c0000;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.return:hover{
+    background-color: #ffe5e5;
 }
 
 .price{
