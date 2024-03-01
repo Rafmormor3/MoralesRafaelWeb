@@ -8,7 +8,7 @@ import { Category } from '../interfaces/Category';
 })
 export class CategoryService {
 
-  private url:string = "http://localhost:8082";
+  private url:string = "https://proyectoapi-rafmormor3.onrender.com";
 
   constructor(private http: HttpClient) { }
 
