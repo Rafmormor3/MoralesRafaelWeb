@@ -4,17 +4,17 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-7">
   
-          <h1 class="text-black mb-4">Registro</h1>
+          <h1 class="text-black mb-4 title">Registro</h1>
 
           <form [formGroup]="myForm" (ngSubmit)="submit()">
             <div class="card" style="border-radius: 15px;">
                 <div class="card-body">
     
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Nombre</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="text" class="form-control form-control" name="name" formControlName="name"/>
                         @if(invalidField("name")){
                             <span class="form-text text-danger">El nombre es obligatorio</span>
@@ -25,10 +25,10 @@
                 <hr class="mx-n3">
     
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Email</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="email" class="form-control form-control" name="email" formControlName="email"/>
                         @if(invalidField("email")){
                             <span class="form-text text-danger">{{emailErrorMsg}}</span>
@@ -39,10 +39,10 @@
                 <hr class="mx-n3">
     
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Teléfono</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="text" class="form-control form-control" name="phone" formControlName="phone"/>
                         @if(invalidField("phone")){
                             <span class="form-text text-danger">{{phoneErrors}}</span>
@@ -53,10 +53,10 @@
                 <hr class="mx-n3">
     
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Dirección</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="text" class="form-control form-control" name="address" formControlName="address"/>
                         @if(invalidField("address")){
                             <span class="form-text text-danger">La dirección es obligatoria</span>
@@ -67,10 +67,10 @@
                 <hr class="mx-n3">
 
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Nombre de Usuario</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="text" class="form-control form-control" name="username" formControlName="username"/>
                         @if(invalidField("username")){
                             <span class="form-text text-danger">Nombre de usuario ya existente</span>
@@ -81,10 +81,10 @@
                 <hr class="mx-n3">
 
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Contraseña</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="password" class="form-control form-control" name="password" formControlName="password"/>
                         @if(invalidField("password")){
                             <span class="form-text text-danger">La contraseña es obligatoria</span>
@@ -94,10 +94,10 @@
     
                 <hr class="mx-n3">
                 <div class="row align-items-center pt-2 pb-1">
-                    <div class="col-md-3 ps-5">
+                    <div class="col-md-3 ps-5 label">
                         <h6 class="mb-0">Repetir Contraseña</h6>
                     </div>
-                    <div class="col-md-9 pe-5">
+                    <div class="col-md-9 pe-5 input">
                         <input type="password" class="form-control form-control" name="passwordRep" formControlName="passwordRep"/>
                         @if(invalidField("passwordRep")){
                             <span class="form-text text-danger">Contraseñas no coinciden</span>
@@ -107,7 +107,7 @@
     
                 <hr class="mx-n3">
     
-                <div class="px-5 py-4">
+                <div class="px-5 py-4 buttons">
                     <button type="submit" class="login">Confirmar</button>
                     <button type="submit" class="cancel" routerLink="/login">Cancelar</button>
                 </div>
@@ -120,4 +120,4 @@
         </div>
       </div>
     </div>
-  </section>
+  </section><br><br><br><br><br><br><br><br><br><br>

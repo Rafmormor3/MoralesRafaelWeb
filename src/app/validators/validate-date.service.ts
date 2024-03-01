@@ -21,6 +21,9 @@ export class ValidateDateService {
 
     const today = new Date()
 
+    //console.log(field1)
+    //console.log(field2)
+
     // fecha sin la hora
     const field1DateOnly = new Date(field1.getFullYear(), field1.getMonth(), field1.getDate());
     const field2DateOnly = new Date(field2.getFullYear(), field2.getMonth(), field2.getDate());

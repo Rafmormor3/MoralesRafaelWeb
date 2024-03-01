@@ -82,6 +82,15 @@ export class DetailsComponent implements OnInit{
           padding-left:5px;
           marging-left:5px;
         }
+
+        @media only screen and (max-width: 768px) {
+          #startDate, #endDate{
+            border-radius:5px;
+            width:45%;
+            padding-left:5px;
+            marging-left:5px;
+          }
+        }
       </style>
       <div>
         <label>Fecha de Inicio: </label>
