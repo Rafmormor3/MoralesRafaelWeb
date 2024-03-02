@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class VehicleService {
 
-  private url:string = "https://proyectoapi-rafmormor3.onrender.com";
+  private url:string = "http://localhost:8082";
 
   constructor(private http : HttpClient) { }
 
