@@ -14,7 +14,7 @@ export class ValidateEmailService implements AsyncValidator {
   validate(control:AbstractControl):Observable<ValidationErrors | null>{
     const email = control.value; 
 
-    return this.http.get<any[]>(`http://localhost:8082/user?email=${email}`).pipe(
+    return this.http.get<any[]>(`https://proyectoapi-rafmormor3.onrender.com/user?email=${email}`).pipe(
       map(resp => {
         return (resp.length===0)? null : {emailTaken:true}
       }),
