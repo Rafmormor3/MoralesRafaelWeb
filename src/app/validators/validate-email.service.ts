@@ -12,7 +12,7 @@ export class ValidateEmailService implements AsyncValidator {
 
   //Valida si el email existe ya en la base de datos, devolviendonos un error en caso afirmativo.
   validate(control:AbstractControl):Observable<ValidationErrors | null>{
-    const email = control.value;
+    const email = control.value; 
 
     return this.http.get<any[]>(`http://localhost:8082/user?email=${email}`).pipe(
       map(resp => {
