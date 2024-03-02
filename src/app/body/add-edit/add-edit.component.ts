@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-edit',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, JsonPipe],
+  imports: [FormsModule, ReactiveFormsModule, JsonPipe, RouterLink],
   templateUrl: './add-edit.component.html',
   styleUrl: './add-edit.component.css'
 })
