@@ -79,6 +79,7 @@ export class DetailsComponent implements OnInit{
         #startDate, #endDate{
           border-radius:5px;
           width:30%;
+          height: 40px;
           padding-left:5px;
           marging-left:5px;
         }

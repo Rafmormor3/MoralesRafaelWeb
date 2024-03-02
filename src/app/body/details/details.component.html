@@ -18,10 +18,10 @@
                         <h1 class="price">{{vehicle.dailyPrice}} €/dia</h1><br><br>
                         <div>
                             @if(login()){
-                                <button class="button" (click)="form()">Alquilar Ahora</button>
-                                <button class="return" routerLink="/vehicles">Volver</button>
+                                <button class="button" (click)="form()" alt="alquilar">Alquilar Ahora</button>
+                                <button class="return" routerLink="/vehicles" alt="volver">Volver</button>
                             }@else {
-                                <button class="return ret" routerLink="/vehicles">Volver</button>
+                                <button class="return ret" routerLink="/vehicles" alt="volver">Volver</button>
                             }
                         </div>
                     </div>
