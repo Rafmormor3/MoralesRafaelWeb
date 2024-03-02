@@ -7,12 +7,12 @@ import { UploadService } from '../../services/upload.service';
 import { VehicleService } from '../../services/vehicle.service';
 import Swal from 'sweetalert2';
 import { JsonPipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, JsonPipe],
+  imports: [FormsModule, ReactiveFormsModule, JsonPipe, RouterLink],
   templateUrl: './add-edit.component.html',
   styleUrl: './add-edit.component.css'
 })
