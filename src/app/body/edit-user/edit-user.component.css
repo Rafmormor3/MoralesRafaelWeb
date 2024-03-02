@@ -3,6 +3,7 @@
     background-color: #710000;
     color: aliceblue;
     width: 30%;
+    height: 44px;
     border-radius: 10px;
     border: solid 1px;
     margin-right: 3px;
@@ -16,6 +17,7 @@
     background-color: #ffffff;
     color: #710000;
     width: 30%;
+    height: 44px;
     border-radius: 10px;
     border: solid 1px;
 }
