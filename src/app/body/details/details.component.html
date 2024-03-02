@@ -19,8 +19,10 @@
                         <div>
                             @if(login()){
                                 <button class="button" (click)="form()">Alquilar Ahora</button>
+                                <button class="return" routerLink="/vehicles">Volver</button>
+                            }@else {
+                                <button class="return ret" routerLink="/vehicles">Volver</button>
                             }
-                            <button class="return" routerLink="/vehicles">Volver</button>
                         </div>
                     </div>
                 </div>

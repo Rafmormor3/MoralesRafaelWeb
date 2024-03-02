@@ -55,4 +55,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .rent{
+        width: 60%;
+    }
+    .price{
+        text-align: center;
+    }
 }

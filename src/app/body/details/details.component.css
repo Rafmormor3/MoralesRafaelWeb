@@ -106,13 +106,17 @@
     }
 
     .button{
-        margin-left: 17%;
+        margin-left: 24%;
         width: 100%;
         height: 50px;
     }
 
     .return{
         width: 100px;
-        margin-left: 42%;
+        margin-left: 47%;
+    }
+
+    .ret{
+        margin-left: 100%;
     }
 }

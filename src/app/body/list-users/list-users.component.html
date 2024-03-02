@@ -5,10 +5,10 @@
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Email</th>
-          <th scope="col">Telefono</th>
-          <th scope="col">Direccion</th>
+          <th scope="col" class="movil">Nombre</th>
+          <th scope="col" class="movil">Email</th>
+          <th scope="col" class="movil">Telefono</th>
+          <th scope="col" class="movil">Direccion</th>
           <th scope="col">Nombre de Usuario</th>
           <th></th>
         </tr>
@@ -18,10 +18,10 @@
               @for (user of listUsers; track $index) {
                   <tr>
                     <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.phone}}</td>
-                    <td>{{user.address}}</td>
+                    <td class="movil">{{user.name}}</td>
+                    <td class="movil">{{user.email}}</td>
+                    <td class="movil">{{user.phone}}</td>
+                    <td class="movil">{{user.address}}</td>
                     <td>{{user.username}}</td>
                     <td>
                         <button class="btn btn-warning" (click)="goTo(user.id)">Editar</button>

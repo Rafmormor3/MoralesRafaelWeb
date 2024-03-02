@@ -45,6 +45,22 @@ export class RegisterComponent {
             && this.myForm.get(field)?.touched;
   }
 
+  //Manejo de los mensajes de error del username
+  get usernameErrorMsg(): string {
+    const errors = this.myForm.get('username')?.errors ;
+    let errorMsg: string = '';
+    if(errors){
+      if( errors['required']){
+        errorMsg = 'El nombre de usuario es obligatorio';
+      }
+      else if(errors['usernameTaken']){
+        errorMsg = 'El el nombre de usuario ya esta en uso';
+      }
+      
+    }
+    return errorMsg;
+  }
+
   //Manejo de los mensajes de error del email
   get emailErrorMsg(): string {
     const errors = this.myForm.get('email')?.errors ;

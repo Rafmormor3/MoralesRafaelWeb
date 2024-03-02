@@ -22,3 +22,44 @@
 .cancel:hover{
     background-color: #ecdddd;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .login{
+        background-color: #710000;
+        color: aliceblue;
+        width: 45%;
+        height: 40px;
+        border-radius: 10px;
+        border: solid 1px;
+        margin-right: 3px;
+        margin-left: -15px;
+    }
+
+    .cancel{
+        background-color: #ffffff;
+        color: #710000;
+        width: 40%;
+        height: 40px;
+        border-radius: 10px;
+        border: solid 1px;
+    }
+
+    .title{
+        text-align: center;
+    }
+
+    .input{
+       margin-left: 4%;
+    }
+
+    .label{
+        text-align: center;
+        margin-left: -5%;
+    }
+
+    .buttons{
+        width: 100%;
+        margin-left: 10%;
+    }
+}

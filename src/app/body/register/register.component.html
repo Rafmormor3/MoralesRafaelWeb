@@ -73,7 +73,7 @@
                     <div class="col-md-9 pe-5 input">
                         <input type="text" class="form-control form-control" name="username" formControlName="username"/>
                         @if(invalidField("username")){
-                            <span class="form-text text-danger">Nombre de usuario ya existente</span>
+                            <span class="form-text text-danger">{{usernameErrorMsg}}</span>
                         }
                     </div>
                 </div>

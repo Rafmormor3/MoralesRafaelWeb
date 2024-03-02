@@ -4,9 +4,9 @@
 <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Matricula</th>
+        <th scope="col" class="movil">Matricula</th>
         <th scope="col">Marca</th>
-        <th scope="col">Modelo</th>
+        <th scope="col" class="movil">Modelo</th>
         <th scope="col">Fecha de Inicio</th>
         <th scope="col">Fecha Final</th>
         <th scope="col">Precio Total</th>
@@ -16,9 +16,9 @@
         @if(rentals){
             @for (rental of rentals; track $index) {
                 <tr>
-                  <td>{{toVehicle(rental.vehicle).plateNumber}}</td>
+                  <td class="movil">{{toVehicle(rental.vehicle).plateNumber}}</td>
                   <td>{{toVehicle(rental.vehicle).brand}}</td>
-                  <td>{{toVehicle(rental.vehicle).model}}</td>
+                  <td class="movil">{{toVehicle(rental.vehicle).model}}</td>
                   <td>{{rental.startDate}}</td>
                   <td>{{rental.endDate}}</td>
                   <td>{{rental.totalPrice}} €</td>

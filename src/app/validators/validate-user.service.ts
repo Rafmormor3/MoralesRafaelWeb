@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ValidatorFn, AbstractControl, ValidationErrors, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
