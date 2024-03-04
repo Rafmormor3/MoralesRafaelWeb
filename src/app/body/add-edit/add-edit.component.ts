@@ -170,7 +170,8 @@ export class AddEditComponent implements OnInit{
                 text: "Vehiculo añadido!",
                 icon: "success",
                 confirmButtonColor:"#710000"
-              })
+              }),
+              this.image="";
             },
             error: (err) => {
               Swal.fire({

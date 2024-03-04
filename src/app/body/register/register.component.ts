@@ -8,6 +8,7 @@ import { User } from '../../interfaces/User';
 import { JsonPipe } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
+import { PasswordService } from '../../validators/password.service';
 
 @Component({
   selector: 'app-register',
@@ -25,6 +26,7 @@ export class RegisterComponent {
     private validateEmailService:ValidateEmailService,
     private validateUserService:ValidateUserService,
     private validateUsernameService:ValidateUsernameService,
+    private passwordService:PasswordService,
     private userService : UserService,
     private router:Router
   ){}
@@ -36,13 +38,29 @@ export class RegisterComponent {
     phone:["",[Validators.required,Validators.pattern("[0-9]*"), Validators.minLength(9), Validators.maxLength(10)]],
     address:["",[Validators.required]],
     username:["",[Validators.required],[this.validateUsernameService]],
-    password:["",[Validators.required]],
+    password:["",[Validators.required, this.passwordService.createPasswordStrengthValidator()]],
     passwordRep:["",[Validators.required]]
   },{validators:[this.validateUserService.passwords("password","passwordRep")]})
 
   invalidField(field:string){
     return this.myForm.get(field)?.invalid 
             && this.myForm.get(field)?.touched;
+  }
+
+  //Manejo de los mensajes de error del email
+  get errorPassword(): string {
+    const errors = this.myForm.get('password')?.errors ;
+    let errorMsg: string = '';
+    if(errors){
+      if( errors['required']){
+        errorMsg = 'La contraseña es obligatoria';
+      }
+      else if(errors['passwordStrength']){
+        errorMsg = 'La contraseña debe tener una mayuscula, una minuscula y un numero.';
+      }
+      
+    }
+    return errorMsg;
   }
 
   //Manejo de los mensajes de error del username
@@ -92,6 +110,9 @@ export class RegisterComponent {
         errorMsg = 'El telefono esta compuesto por solo numeros';
       }
       else if(errors['minlength']){
+        errorMsg = 'El numero de telefono tiene que tener entre 9 y 10 digitos'
+      }
+      else if(errors['maxlength']){
         errorMsg = 'El numero de telefono tiene que tener entre 9 y 10 digitos'
       }
       
