@@ -32,6 +32,7 @@ export class HistorialComponent implements OnInit{
 
         //Estamos almacenando los Observables que estamos generando al cambiar el alquiler.
         const rentalObservables = user.rentalList.map(
+          
           rental=> this.vehicleService.getVehicle(rental.vehicle as number).pipe(
               //Con map estamos combinando la copia de el alquiler con el objeto vehiculo que obtenemos del getVehicle.
               //Cambiando el vehiculo de tipo number al objeto vehiculo
