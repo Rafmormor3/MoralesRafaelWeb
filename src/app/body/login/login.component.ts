@@ -24,6 +24,7 @@ export class LoginComponent {
   loginForm(){
     if(this.myForm.valid){
       const {username, password} = this.myForm.value
+      console.log(this.myForm.value)
       this.loginService.login(username, password)
       .subscribe(
         resp => { //Nos devuelve true si hemos sido logueados correctamente, y nos manda al home.
