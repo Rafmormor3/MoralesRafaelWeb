@@ -87,7 +87,7 @@
                     <div class="col-md-9 pe-5 input">
                         <input type="password" class="form-control form-control" name="password" formControlName="password"/>
                         @if(invalidField("password")){
-                            <span class="form-text text-danger">La contraseña es obligatoria</span>
+                            <span class="form-text text-danger">{{errorPassword}}</span>
                         }
                     </div>
                 </div>

@@ -73,9 +73,9 @@
                           <h6 class="mb-0">Nombre de Usuario</h6>
                       </div>
                       <div class="col-md-9 pe-5 input">
-                          <input type="text" class="form-control form-control" name="username" formControlName="username"/>
+                          <input type="text" class="form-control form-control" name="username" formControlName="username" required/>
                           @if(invalidField("username")){
-                              <span class="form-text text-danger">Nombre de usuario ya existente</span>
+                              <span class="form-text text-danger">Nombre de usuario requerido</span>
                           }
                       </div>
                   </div>
@@ -84,7 +84,7 @@
       
                   <div class="px-5 py-4 buttons">
 
-                      <button type="submit" class="login" alt="Confirmar">Confirmar</button>
+                      <button type="submit" class="login" alt="Confirmar" [disabled]="myForm.invalid">Confirmar</button>
                       <button type="submit" class="cancel" routerLink="/listUsers" alt="Cancelar">Cancelar</button>
 
                   </div>
