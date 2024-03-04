@@ -89,6 +89,9 @@ export class EditUserComponent implements OnInit{
       else if(errors['minlength']){
         errorMsg = 'El numero de telefono tiene que tener entre 9 y 10 digitos'
       }
+      else if(errors['maxlength']){
+        errorMsg = 'El numero de telefono tiene que tener entre 9 y 10 digitos'
+      }
       
     }
     return errorMsg;
