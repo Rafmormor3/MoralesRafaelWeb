@@ -70,7 +70,7 @@ export class RentalFormComponent implements OnInit{
       res = days * this.vehicle.dailyPrice;
     }
     
-    return res;
+    return parseFloat(res.toFixed(2));
   }
 
   //Devolvemos el formato dd/MM/yyyy de la fecha que introducimos

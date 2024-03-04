@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { Content, formData } from '../../interfaces/Pageable';
@@ -13,7 +13,7 @@ import { LoginService } from '../../services/login.service';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink, JsonPipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
