@@ -108,6 +108,7 @@ export class EditUserComponent implements OnInit{
           title: "Éxito!",
           text: "Usuario editado!",
           icon: "success",
+          confirmButtonColor:"#710000"
         })
       },
       error: (error)=>{
@@ -115,6 +116,7 @@ export class EditUserComponent implements OnInit{
           title: "Error",
           text: error.error.message,
           icon: "error",
+          confirmButtonColor:"#710000"
         });
       }
     })

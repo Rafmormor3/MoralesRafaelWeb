@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private url : string = "http://localhost:8082/register";
+  private url : string = "https://proyectoapi-rafmormor3.onrender.com/register";
 
   constructor(private http:HttpClient) { }
 
@@ -19,15 +19,15 @@ export class UserService {
 
   //Obtenemos el usuario con el id que pasamos por parametro.
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(`http://localhost:8082/user/${id}`)
+    return this.http.get<User>(`https://proyectoapi-rafmormor3.onrender.com/user/${id}`)
   }
 
   //Obtenemos todos los usuarios
   getUsers():Observable<User[]>{
-    return this.http.get<User[]>("http://localhost:8082/users");
+    return this.http.get<User[]>("https://proyectoapi-rafmormor3.onrender.com/users");
   }
 
   editUser(id:number, user:Omit<User, "id" | "password" | "role" | "active" | "rentalList">):Observable<User>{
-    return this.http.put<User>(`http://localhost:8082/editUser/${id}`, user);
+    return this.http.put<User>(`https://proyectoapi-rafmormor3.onrender.com/editUser/${id}`, user);
   }
 }

@@ -15,7 +15,7 @@ export class ValidateUsernameService implements AsyncValidator{
 
     const username = control.value;
 
-    return this.http.get<any[]>(`http://localhost:8082/user/username?username=${username}`).pipe(
+    return this.http.get<any[]>(`https://proyectoapi-rafmormor3.onrender.com/user/username?username=${username}`).pipe(
       map(resp=>{
         return (resp.length===0)? null : {usernameTaken:true}
       }),
